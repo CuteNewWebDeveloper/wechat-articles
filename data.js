@@ -17,7 +17,7 @@ const articlesData = {
                     url: "https://mp.weixin.qq.com/s/v_qAgIZpqounGqs6P7N8Hw",
                     date: "2024-08-29",
                     summary: "祝贺国航、南航接收首架C919！"
-                }
+                },
 		{
 		    title: "你出现在我诗的每一页 | 挥别中国民航最年长客机"
 		    url: "https://mp.weixin.qq.com/s/5HS2P7mBEAX1YLzjCbD7Rg",
