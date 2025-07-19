@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>精选公众号文章合集</title>
+    <title>Cute New航空摄影 - 文章合集</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 基础样式 */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -16,234 +16,496 @@
             font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f8f9fa;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
             padding: 20px;
+            min-height: 100vh;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 20px;
         }
         
         header {
             text-align: center;
             margin-bottom: 30px;
             padding: 30px 20px;
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
             color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            z-index: 0;
         }
         
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
-        .search-box {
-            margin: 20px auto;
-            max-width: 600px;
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stats {
             display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
         }
         
-        #search-input {
-            flex: 1;
-            padding: 12px 15px;
-            border: 2px solid #ddd;
-            border-radius: 4px 0 0 4px;
-            font-size: 1rem;
-        }
-        
-        #search-btn {
-            padding: 12px 20px;
-            background: #1a73e8;
-            color: white;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            font-weight: 500;
+        .stat-item {
+            background: rgba(255,255,255,0.15);
+            padding: 10px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
         }
         
         .categories {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            justify-content: center;
         }
         
         .category-btn {
-            padding: 8px 16px;
+            padding: 10px 25px;
             background: #f1f3f4;
             border: none;
-            border-radius: 20px;
+            border-radius: 50px;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 1rem;
             transition: all 0.3s;
+            font-weight: 500;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.08);
         }
         
         .category-btn:hover, .category-btn.active {
             background: #1a73e8;
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(26, 115, 232, 0.3);
         }
         
         .category-section {
             background: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 35px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .category-section:hover {
+            transform: translateY(-5px);
         }
         
         .category-title {
             font-size: 1.8rem;
             color: #1a73e8;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
             border-bottom: 2px solid #eaeaea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .articles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
         
         .article-card {
             border: 1px solid #eaeaea;
-            border-radius: 8px;
-            padding: 20px;
+            border-radius: 12px;
+            padding: 25px;
             transition: all 0.3s;
             background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .article-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #1a2980, #26d0ce);
+            transition: width 0.3s;
+        }
+        
+        .article-card:hover::before {
+            width: 8px;
         }
         
         .article-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             border-color: #1a73e8;
         }
         
         .article-card h3 {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
         }
         
         .article-card a {
             text-decoration: none;
             color: #1a73e8;
-            font-weight: 500;
-            font-size: 1.2rem;
+            font-weight: 600;
+            font-size: 1.25rem;
             display: block;
             margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+        
+        .article-card a:hover {
+            color: #1a2980;
+            text-decoration: underline;
         }
         
         .article-card p {
             color: #5f6368;
-            margin-bottom: 10px;
-            line-height: 1.5;
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
         
-        .article-card small {
+        .article-card .date {
             color: #70757a;
             display: block;
             margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .article-card .tag {
+            display: inline-block;
+            background: #e8f0fe;
+            color: #1a73e8;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+        
+        /* 折叠功能相关样式 */
+        .articles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        /* 默认显示前3篇文章 */
+        .articles-container .article-card:nth-child(n+4) {
+            display: none;
+        }
+        
+        /* 当复选框被选中时显示所有文章 */
+        .expand-toggle:checked ~ .articles-container .article-card {
+            display: block !important;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .expand-toggle {
+            display: none;
+        }
+        
+        .expand-btn {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: #f1f3f4;
+            color: #1a73e8;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1rem;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .expand-btn:hover {
+            background: #1a73e8;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.3);
+        }
+        
+        .expand-toggle:checked ~ .expand-btn .more-text {
+            display: none;
+        }
+        
+        .expand-toggle:checked ~ .expand-btn .less-text {
+            display: inline;
+        }
+        
+        .less-text {
+            display: none;
+        }
+        
+        .category-count {
+            background: #1a73e8;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 15px;
+            font-size: 1rem;
         }
         
         footer {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 50px;
             color: #70757a;
-            padding: 20px;
+            padding: 30px;
             border-top: 1px solid #eaeaea;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         @media (max-width: 768px) {
-            .articles-grid {
+            .articles-grid, .articles-container {
                 grid-template-columns: 1fr;
             }
             
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .category-title {
                 font-size: 1.5rem;
             }
+            
+            .stats {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .airplane-icon {
+            display: inline-block;
+            margin-right: 10px;
+            animation: fly 6s linear infinite;
+        }
+        
+        @keyframes fly {
+            0% { transform: translateX(-30px); opacity: 0; }
+            10% { transform: translateX(0); opacity: 1; }
+            90% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(30px); opacity: 0; }
+        }
+        
+        /* 分类筛选功能样式 */
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Cute New航空摄影公众号文章推荐</h1>
-            <p>同步更新精选内容</p>
+            <h1>Cute New航空摄影</h1>
+            <p class="subtitle">公众号文章同步更新</p>
+            <div class="stats">
+                <div class="stat-item"><i class="fas fa-plane"></i> 总文章数: 7篇</div>
+                <div class="stat-item"><i class="fas fa-images"></i> 图集: 2个</div>
+                <div class="stat-item"><i class="fas fa-calendar-alt"></i> 更新: 2025-07-19</div>
+            </div>
         </header>
-
         
-        <!-- 往期精选 -->
-        <section class="category-section" id="previous selections">
-            <h2 class="category-title">往期精选</h2>
-            <div class="articles-grid">
+        <!-- 分类筛选 -->
+        <div class="categories">
+            <button class="category-btn active" data-category="all">全部</button>
+            <button class="category-btn" data-category="past">往期精选</button>
+            <button class="category-btn" data-category="album">CuteNew图集</button>
+        </div>
+        
+        <!-- 往期精选分类（带折叠功能） -->
+        <section class="category-section" id="past-section">
+            <h2 class="category-title">
+                <span><i class="fas fa-star"></i> 往期精选</span>
+                <span class="category-count">4篇</span>
+            </h2>
+            
+            <input type="checkbox" id="toggle-past" class="expand-toggle">
+            
+            <div class="articles-container">
                 <!-- 文章卡片 1 -->
-                <div class="article-card" data-category="previous selections">
+                <div class="article-card" data-category="past">
                     <h3><a href="https://mp.weixin.qq.com/s/7dAL0xlnO4SQXaE_QG-GJw" target="_blank">我们回来了！</a></h3>
                     <p>我们回来了！</p>
-                    <small>发布日期: 2024-07-28</small>
+                    <span class="date">发布日期: 2024-07-28</span>
                 </div>
                 
                 <!-- 文章卡片 2 -->
-                <div class="article-card" data-category="previous selections">
+                <div class="article-card" data-category="past">
                     <h3><a href="https://mp.weixin.qq.com/s/v_qAgIZpqounGqs6P7N8Hw" target="_blank">永不放弃 | 国航、南航接收首架C919</a></h3>
                     <p>祝贺国航、南航接收首架C919！</p>
-                    <small>发布日期: 2024-08-29</small>
+                    <span class="date">发布日期: 2024-08-29</span>
                 </div>
                 
                 <!-- 文章卡片 3 -->
-                <div class="article-card" data-category="previous selections">
+                <div class="article-card" data-category="past">
                     <h3><a href="https://mp.weixin.qq.com/s/5HS2P7mBEAX1YLzjCbD7Rg" target="_blank">你出现在我诗的每一页 | 挥别中国民航最年长客机</a></h3>
                     <p>B-2445，再见！</p>
-                    <small>发布日期: 2024-09-07</small>
+                    <span class="date">发布日期: 2024-09-07</span>
                 </div>
                 
                 <!-- 文章卡片 4 -->
-                <div class="article-card" data-category="previous selections">
-                    <h3><a href="https://mp.weixin.qq.com/s/_1WqFSi2i34zxRNtJQ2Qyg" target="_blank">志在“四”方 | 空客A340首飞纪念</a></h3>
+                <div class="article-card" data-category="past">
+                    <h3><a href="https://mp.weixin.qq.com/s/_1WqFSi2i34zxRNtJQ2Qyg" target="_blank">志在"四"方 | 空客A340首飞纪念</a></h3>
                     <p>A340首飞33周年特别纪念</p>
-                    <small>发布日期: 2024-10-28</small>
+                    <span class="date">发布日期: 2024-10-28</span>
                 </div>
             </div>
+            
+            <label for="toggle-past" class="expand-btn">
+                <span class="more-text"><i class="fas fa-chevron-down"></i> 显示全部 (共4篇)</span>
+                <span class="less-text"><i class="fas fa-chevron-up"></i> 收起文章</span>
+            </label>
         </section>
         
-        <!-- cutenew图集 -->
-        <section class="category-section" id="cutenew album">
-            <h2 class="category-title">Cute New图集</h2>
-            <div class="articles-grid">
+        <!-- CuteNew图集分类（带折叠功能） -->
+        <section class="category-section" id="album-section">
+            <h2 class="category-title">
+                <span><i class="fas fa-camera"></i> CuteNew图集</span>
+                <span class="category-count">3篇</span>
+            </h2>
+            
+            <input type="checkbox" id="toggle-album" class="expand-toggle">
+            
+            <div class="articles-container">
                 <!-- 文章卡片 1 -->
-                <div class="article-card" data-category="cutenew album">
+                <div class="article-card" data-category="album">
                     <h3><a href="https://mp.weixin.qq.com/s/rtXNFyf2BlJV912wZi5viw" target="_blank">大千世界 | Cute New优秀作品巡礼</a></h3>
-                    <p>“所以游目骋怀，足以极视听之娱，信可乐也”</p>
-                    <small>发布日期: 2024-09-28</small>
+                    <p>"所以游目骋怀，足以极视听之娱，信可乐也"</p>
+                    <span class="date">发布日期: 2024-09-28</span>
                 </div>
                 
                 <!-- 文章卡片 2 -->
-                <div class="article-card" data-category="cutenew album">
+                <div class="article-card" data-category="album">
                     <h3><a href="https://mp.weixin.qq.com/s/jkckrBlLlGxxHfP5liDshg" target="_blank">动中有静 | 航空摄影中的技法应用</a></h3>
                     <p>航空摄影的最高使命，是让人类视网膜成为飞行器的第二片天空。</p>
-                    <small>发布日期: 2025-06-29</small>
+                    <span class="date">发布日期: 2025-06-29</span>
                 </div>
                 
                 <!-- 文章卡片 3 -->
-                <div class="article-card" data-category="cutenew album">
+                <div class="article-card" data-category="album">
                     <h3><a href="https://mp.weixin.qq.com/s/vqoU48pxDyFJZh5H6TaXYA" target="_blank">天地风云 | CuteNew夏日影集</a></h3>
                     <p>夏日，飞机，漂亮的云</p>
-                    <small>发布日期: 2025-07-15</small>
+                    <span class="date">发布日期: 2025-07-15</span>
                 </div>
-                
             </div>
+            
+            <label for="toggle-album" class="expand-btn">
+                <span class="more-text"><i class="fas fa-chevron-down"></i> 显示全部 (共3篇)</span>
+                <span class="less-text"><i class="fas fa-chevron-up"></i> 收起文章</span>
+            </label>
         </section>
-
         
         <footer>
-            <p>更新时间: 2025-7-19 | 共收录 7 篇精选文章</p>
+            <p>© 2025 Cute New航空摄影 | 共收录 7 篇精选文章</p>
+            <p>最后更新: 2025-07-19</p>
         </footer>
     </div>
+    
+    <script>
+        // 分类筛选功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const allSections = document.querySelectorAll('.category-section');
+            const allArticles = document.querySelectorAll('.article-card');
+            
+            // 默认展开所有分类
+            allSections.forEach(section => {
+                section.style.display = 'block';
+            });
+            
+            // 为每个按钮添加点击事件
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // 移除所有按钮的active类
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    // 为当前按钮添加active类
+                    this.classList.add('active');
+                    
+                    const category = this.dataset.category;
+                    
+                    // 处理分类筛选
+                    if (category === 'all') {
+                        // 显示所有分类
+                        allSections.forEach(section => {
+                            section.style.display = 'block';
+                        });
+                    } else {
+                        // 隐藏所有分类
+                        allSections.forEach(section => {
+                            section.style.display = 'none';
+                        });
+                        
+                        // 显示选中的分类
+                        document.getElementById(`${category}-section`).style.display = 'block';
+                    }
+                });
+            });
+            
+            // 折叠功能初始化
+            const expandToggles = document.querySelectorAll('.expand-toggle');
+            
+            // 根据文章数量决定是否显示折叠按钮
+            document.querySelectorAll('.articles-container').forEach(container => {
+                const articleCards = container.querySelectorAll('.article-card');
+                const expandBtn = container.nextElementSibling;
+                
+                // 如果文章数量不超过3篇，隐藏折叠按钮
+                if (articleCards.length <= 3) {
+                    expandBtn.style.display = 'none';
+                }
+            });
+            
+            // 为折叠按钮添加点击事件
+            expandToggles.forEach(toggle => {
+                toggle.addEventListener('change', function() {
+                    // 不需要额外操作，CSS会处理显示/隐藏
+                });
+            });
+        });
+    </script>
 </body>
 </html>
