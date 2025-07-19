@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精选公众号文章合集</title>
+    <style>
+        /* 基础样式 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .search-box {
+            margin: 20px auto;
+            max-width: 600px;
+            display: flex;
+        }
+        
+        #search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+        
+        #search-btn {
+            padding: 12px 20px;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .category-btn {
+            padding: 8px 16px;
+            background: #f1f3f4;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: #1a73e8;
+            color: white;
+        }
+        
+        .category-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            color: #1a73e8;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .article-card {
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: #1a73e8;
+        }
+        
+        .article-card h3 {
+            margin-bottom: 10px;
+        }
+        
+        .article-card a {
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: 500;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .article-card p {
+            color: #5f6368;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .article-card small {
+            color: #70757a;
+            display: block;
+            margin-top: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #70757a;
+            padding: 20px;
+            border-top: 1px solid #eaeaea;
+        }
+        
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .category-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Cute New航空摄影公众号文章推荐</h1>
+            <p>同步更新精选内容</p>
+        </header>
+
+        
+        <!-- 往期精选 -->
+        <section class="category-section" id="previous selections">
+            <h2 class="category-title">往期精选</h2>
+            <div class="articles-grid">
+                <!-- 文章卡片 1 -->
+                <div class="article-card" data-category="previous selections">
+                    <h3><a href="https://mp.weixin.qq.com/s/7dAL0xlnO4SQXaE_QG-GJw" target="_blank">我们回来了！</a></h3>
+                    <p>我们回来了！</p>
+                    <small>发布日期: 2024-07-28</small>
+                </div>
+                
+                <!-- 文章卡片 2 -->
+                <div class="article-card" data-category="previous selections">
+                    <h3><a href="https://mp.weixin.qq.com/s/v_qAgIZpqounGqs6P7N8Hw" target="_blank">永不放弃 | 国航、南航接收首架C919</a></h3>
+                    <p>祝贺国航、南航接收首架C919！</p>
+                    <small>发布日期: 2024-08-29</small>
+                </div>
+                
+                <!-- 文章卡片 3 -->
+                <div class="article-card" data-category="previous selections">
+                    <h3><a href="https://mp.weixin.qq.com/s/5HS2P7mBEAX1YLzjCbD7Rg" target="_blank">你出现在我诗的每一页 | 挥别中国民航最年长客机</a></h3>
+                    <p>B-2445，再见！</p>
+                    <small>发布日期: 2024-09-07</small>
+                </div>
+                
+                <!-- 文章卡片 4 -->
+                <div class="article-card" data-category="previous selections">
+                    <h3><a href="https://mp.weixin.qq.com/s/_1WqFSi2i34zxRNtJQ2Qyg" target="_blank">志在“四”方 | 空客A340首飞纪念</a></h3>
+                    <p>A340首飞33周年特别纪念</p>
+                    <small>发布日期: 2024-10-28</small>
+                </div>
+            </div>
+        </section>
+        
+        <!-- cutenew图集 -->
+        <section class="category-section" id="cutenew album">
+            <h2 class="category-title">Cute New图集</h2>
+            <div class="articles-grid">
+                <!-- 文章卡片 1 -->
+                <div class="article-card" data-category="cutenew album">
+                    <h3><a href="https://mp.weixin.qq.com/s/rtXNFyf2BlJV912wZi5viw" target="_blank">大千世界 | Cute New优秀作品巡礼</a></h3>
+                    <p>“所以游目骋怀，足以极视听之娱，信可乐也”</p>
+                    <small>发布日期: 2024-09-28</small>
+                </div>
+                
+                <!-- 文章卡片 2 -->
+                <div class="article-card" data-category="cutenew album">
+                    <h3><a href="https://mp.weixin.qq.com/s/jkckrBlLlGxxHfP5liDshg" target="_blank">动中有静 | 航空摄影中的技法应用</a></h3>
+                    <p>航空摄影的最高使命，是让人类视网膜成为飞行器的第二片天空。</p>
+                    <small>发布日期: 2025-06-29</small>
+                </div>
+                
+                <!-- 文章卡片 3 -->
+                <div class="article-card" data-category="cutenew album">
+                    <h3><a href="https://mp.weixin.qq.com/s/vqoU48pxDyFJZh5H6TaXYA" target="_blank">天地风云 | CuteNew夏日影集</a></h3>
+                    <p>夏日，飞机，漂亮的云</p>
+                    <small>发布日期: 2025-07-15</small>
+                </div>
+                
+            </div>
+        </section>
+
+        
+        <footer>
+            <p>更新时间: 2025-7-19 | 共收录 7 篇精选文章</p>
+        </footer>
+    </div>
+</body>
+</html>
