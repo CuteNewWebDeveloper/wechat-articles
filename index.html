@@ -134,7 +134,43 @@
             align-items: center;
         }
         
-        .articles-grid {
+        .title-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sort-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .sort-btn {
+            background: #e8f0fe;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #1a73e8;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .sort-btn:hover {
+            background: #1a73e8;
+            color: white;
+        }
+        
+        .sort-btn.active {
+            background: #1a73e8;
+            color: white;
+        }
+        
+        .articles-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
@@ -215,12 +251,6 @@
         }
         
         /* 折叠功能相关样式 */
-        .articles-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        
         /* 默认显示前3篇文章 */
         .articles-container .article-card:nth-child(n+4) {
             display: none;
@@ -294,7 +324,7 @@
         }
         
         @media (max-width: 768px) {
-            .articles-grid, .articles-container {
+            .articles-container {
                 grid-template-columns: 1fr;
             }
             
@@ -304,6 +334,13 @@
             
             .category-title {
                 font-size: 1.5rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .sort-controls {
+                align-self: flex-end;
             }
             
             .stats {
@@ -331,9 +368,14 @@
             100% { transform: translateX(30px); opacity: 0; }
         }
         
-        /* 分类筛选功能样式 */
-        .hidden {
-            display: none;
+        /* 排序动画 */
+        .sorting {
+            animation: sorting 0.3s ease;
+        }
+        
+        @keyframes sorting {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -343,7 +385,7 @@
             <h1>Cute New航空摄影</h1>
             <p class="subtitle">公众号文章同步更新</p>
             <div class="stats">
-                <div class="stat-item"><i class="fas fa-plane"></i> 总文章数: 7篇</div>
+                <div class="stat-item"><i class="fas fa-plane"></i> 总文章数: 8篇</div>
                 <div class="stat-item"><i class="fas fa-images"></i> 图集: 2个</div>
                 <div class="stat-item"><i class="fas fa-calendar-alt"></i> 更新: 2025-07-19</div>
             </div>
@@ -359,44 +401,62 @@
         <!-- 往期精选分类（带折叠功能） -->
         <section class="category-section" id="past-section">
             <h2 class="category-title">
-                <span><i class="fas fa-star"></i> 往期精选</span>
-                <span class="category-count">4篇</span>
+                <div class="title-content">
+                    <span><i class="fas fa-star"></i> 往期精选</span>
+                    <span class="category-count">5篇</span>
+                </div>
+                <div class="sort-controls">
+                    <button class="sort-btn active" data-section="past-section" data-sort="desc">
+                        <i class="fas fa-arrow-down"></i> 最新在前
+                    </button>
+                    <button class="sort-btn" data-section="past-section" data-sort="asc">
+                        <i class="fas fa-arrow-up"></i> 最早在前
+                    </button>
+                </div>
             </h2>
             
             <input type="checkbox" id="toggle-past" class="expand-toggle">
             
-            <div class="articles-container">
+            <div class="articles-container" id="past-container">
                 <!-- 文章卡片 1 -->
-                <div class="article-card" data-category="past">
+                <div class="article-card" data-category="past" data-date="2024-07-28">
                     <h3><a href="https://mp.weixin.qq.com/s/7dAL0xlnO4SQXaE_QG-GJw" target="_blank">我们回来了！</a></h3>
                     <p>我们回来了！</p>
                     <span class="date">发布日期: 2024-07-28</span>
                 </div>
                 
                 <!-- 文章卡片 2 -->
-                <div class="article-card" data-category="past">
+                <div class="article-card" data-category="past" data-date="2024-08-29">
                     <h3><a href="https://mp.weixin.qq.com/s/v_qAgIZpqounGqs6P7N8Hw" target="_blank">永不放弃 | 国航、南航接收首架C919</a></h3>
                     <p>祝贺国航、南航接收首架C919！</p>
                     <span class="date">发布日期: 2024-08-29</span>
                 </div>
                 
                 <!-- 文章卡片 3 -->
-                <div class="article-card" data-category="past">
+                <div class="article-card" data-category="past" data-date="2024-09-07">
                     <h3><a href="https://mp.weixin.qq.com/s/5HS2P7mBEAX1YLzjCbD7Rg" target="_blank">你出现在我诗的每一页 | 挥别中国民航最年长客机</a></h3>
                     <p>B-2445，再见！</p>
                     <span class="date">发布日期: 2024-09-07</span>
                 </div>
                 
                 <!-- 文章卡片 4 -->
-                <div class="article-card" data-category="past">
+                <div class="article-card" data-category="past" data-date="2024-10-28">
                     <h3><a href="https://mp.weixin.qq.com/s/_1WqFSi2i34zxRNtJQ2Qyg" target="_blank">志在"四"方 | 空客A340首飞纪念</a></h3>
                     <p>A340首飞33周年特别纪念</p>
                     <span class="date">发布日期: 2024-10-28</span>
                 </div>
+
+		<!-- 文章卡片 5 -->
+                <div class="article-card" data-category="past" data-date="2024-11-30">
+                    <h3><a href="https://mp.weixin.qq.com/s/hajyWy2iiAfUHd8Bvr53Ag" target="_blank">蓝天盛宴的视觉华章 | 珠海航展集萃</a></h3>
+                    <p>我们在珠海！</p>
+                    <span class="date">发布日期: 2024-11-30</span>
+                </div>
+
             </div>
             
             <label for="toggle-past" class="expand-btn">
-                <span class="more-text"><i class="fas fa-chevron-down"></i> 显示全部 (共4篇)</span>
+                <span class="more-text"><i class="fas fa-chevron-down"></i> 显示全部 (共5篇)</span>
                 <span class="less-text"><i class="fas fa-chevron-up"></i> 收起文章</span>
             </label>
         </section>
@@ -404,29 +464,39 @@
         <!-- CuteNew图集分类（带折叠功能） -->
         <section class="category-section" id="album-section">
             <h2 class="category-title">
-                <span><i class="fas fa-camera"></i> CuteNew图集</span>
-                <span class="category-count">3篇</span>
+                <div class="title-content">
+                    <span><i class="fas fa-camera"></i> CuteNew图集</span>
+                    <span class="category-count">3篇</span>
+                </div>
+                <div class="sort-controls">
+                    <button class="sort-btn active" data-section="album-section" data-sort="desc">
+                        <i class="fas fa-arrow-down"></i> 最新在前
+                    </button>
+                    <button class="sort-btn" data-section="album-section" data-sort="asc">
+                        <i class="fas fa-arrow-up"></i> 最早在前
+                    </button>
+                </div>
             </h2>
             
             <input type="checkbox" id="toggle-album" class="expand-toggle">
             
-            <div class="articles-container">
+            <div class="articles-container" id="album-container">
                 <!-- 文章卡片 1 -->
-                <div class="article-card" data-category="album">
+                <div class="article-card" data-category="album" data-date="2024-09-28">
                     <h3><a href="https://mp.weixin.qq.com/s/rtXNFyf2BlJV912wZi5viw" target="_blank">大千世界 | Cute New优秀作品巡礼</a></h3>
                     <p>"所以游目骋怀，足以极视听之娱，信可乐也"</p>
                     <span class="date">发布日期: 2024-09-28</span>
                 </div>
                 
                 <!-- 文章卡片 2 -->
-                <div class="article-card" data-category="album">
+                <div class="article-card" data-category="album" data-date="2025-06-29">
                     <h3><a href="https://mp.weixin.qq.com/s/jkckrBlLlGxxHfP5liDshg" target="_blank">动中有静 | 航空摄影中的技法应用</a></h3>
                     <p>航空摄影的最高使命，是让人类视网膜成为飞行器的第二片天空。</p>
                     <span class="date">发布日期: 2025-06-29</span>
                 </div>
                 
                 <!-- 文章卡片 3 -->
-                <div class="article-card" data-category="album">
+                <div class="article-card" data-category="album" data-date="2025-07-15">
                     <h3><a href="https://mp.weixin.qq.com/s/vqoU48pxDyFJZh5H6TaXYA" target="_blank">天地风云 | CuteNew夏日影集</a></h3>
                     <p>夏日，飞机，漂亮的云</p>
                     <span class="date">发布日期: 2025-07-15</span>
@@ -499,10 +569,48 @@
                 }
             });
             
-            // 为折叠按钮添加点击事件
-            expandToggles.forEach(toggle => {
-                toggle.addEventListener('change', function() {
-                    // 不需要额外操作，CSS会处理显示/隐藏
+            // 时间排序功能
+            const sortBtns = document.querySelectorAll('.sort-btn');
+            
+            sortBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const sectionId = this.dataset.section;
+                    const sortOrder = this.dataset.sort;
+                    const container = document.getElementById(sectionId.replace('-section', '-container'));
+                    
+                    // 移除同组按钮的active状态
+                    const groupBtns = document.querySelectorAll(`.sort-btn[data-section="${sectionId}"]`);
+                    groupBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // 为当前按钮添加active状态
+                    this.classList.add('active');
+                    
+                    // 获取所有文章卡片
+                    const articles = Array.from(container.querySelectorAll('.article-card'));
+                    
+                    // 添加排序动画类
+                    container.classList.add('sorting');
+                    setTimeout(() => {
+                        container.classList.remove('sorting');
+                    }, 300);
+                    
+                    // 根据日期排序
+                    articles.sort((a, b) => {
+                        const dateA = new Date(a.dataset.date);
+                        const dateB = new Date(b.dataset.date);
+                        
+                        if (sortOrder === 'desc') {
+                            return dateB - dateA; // 最新在前
+                        } else {
+                            return dateA - dateB; // 最早在前
+                        }
+                    });
+                    
+                    // 清空容器并重新添加排序后的文章
+                    container.innerHTML = '';
+                    articles.forEach(article => {
+                        container.appendChild(article);
+                    });
                 });
             });
         });
